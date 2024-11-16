@@ -50,7 +50,7 @@ export default function Products() {
 					items={items2}
 					/>
 				</Sider> */}
-				<Search placeholder="Search..." allowClear enterButton onChange={handleOnChange}/>
+				<Search placeholder="Search..." allowClear enterButton/>
 			<ProductList list={[{id: 1, name: "Motor nowoczesny", price: 10000, description: "Taki opis", imgUrl: 'https://picsum.photos/700/600'},{id: 2, name: "Motor nowoczesny", price: 10000, description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit facilisis vehicula.", imgUrl: 'https://picsum.photos/700/700'}]}></ProductList>
 		</Layout>
 	);
