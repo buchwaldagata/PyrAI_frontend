@@ -6,7 +6,7 @@ export const Header = () => {
 	return (
 	<header className={s.header}>
 		<div className={s.header__left}>
-		<h1><Link href="/products">My App</Link></h1>
+		<h1><Link href="/products">Investia</Link></h1>
 		</div>
 		<nav className={s.header__right}>
 			<ul className={s.navStyle}>
