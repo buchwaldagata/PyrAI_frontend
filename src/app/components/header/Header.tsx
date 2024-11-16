@@ -11,10 +11,10 @@ export const Header = () => {
 		<nav className={s.header__right}>
 			<ul className={s.navStyle}>
 				<li>
-					<Link href="/products">Home</Link>
+					<Link href="/products">For business</Link>
 				</li>
 				<li>
-					<Link href="/user">My profile</Link>
+					<Link href="/products">For investor</Link>
 				</li>
 			</ul>
 		</nav>
