@@ -26,7 +26,6 @@ export const ProductList: FC<Props> = (props) => {
 				key={product.id}
 				className={s.card}
 				>
-				<Image src={image} alt={product.name} />
 				<div className={s.cardInner}>
 					<p className={s.header}>{product.name}</p>
 					<p>{product.description}</p>

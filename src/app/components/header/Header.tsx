@@ -5,9 +5,9 @@ import Link from 'next/link';
 export const Header = () => {
 	return (
 	<header className={s.header}>
-		<div className={s.header__left}>
-		<h1><Link href="/products">Investia</Link></h1>
-		</div>
+		
+		<h1 className={s.header__left}><Link href="/products">Investia</Link></h1>
+		
 		<nav className={s.header__right}>
 			<ul className={s.navStyle}>
 				<li>
