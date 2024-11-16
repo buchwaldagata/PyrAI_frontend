@@ -1,6 +1,4 @@
 import React, { FC } from 'react'
-import { Card } from 'antd';
-import image from './Cover.png'
 import s from './ProductList.module.scss';
 
 interface ItemsList {

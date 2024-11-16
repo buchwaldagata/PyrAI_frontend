@@ -1,43 +1,39 @@
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+"use client"
 import { Layout } from "antd";
-import { createElement } from "react";
+import Search from 'antd/es/input/Search';
+import { ChangeEvent, useEffect, useState } from "react";
 import { fetchData } from "../api/products/products";
 import { ProductList } from "../components/product_list/ProductList";
-import Search from 'antd/es/input/Search';
+import s from './Products.module.scss';
+
+const DEFAULT_DATA = [{id: 1, name: "Motor nowoczesny", price: 10000, description: "Taki opis", imgUrl: 'https://picsum.photos/700/600'},{id: 2, name: "Motor nowoczesny", price: 10000, description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit facilisis vehicula.", imgUrl: 'https://picsum.photos/700/700'}];
 
 export default function Products() {
-	const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-		(icon, index) => {
-		const key = String(index + 1);
-	
-		return {
-			key: `sub${key}`,
-			icon: createElement(icon),
-			label: `subnav ${key}`, // Tytuł rozwijanego menu
-	
-			// Generowanie 4 elementów w menu dla każdego rozwinięcia
-			children: new Array(4).fill(null).map((_, j) => {
-			const subKey = index * 4 + j + 1;
-			return {
-				key: subKey.toString(),
-				label: `option ${subKey}`,
-			};
-			}),
-		};
-		}
-	);
+	const [products, setProducts] = useState<any[]>([]);
+
+
 	async function getData() {
 		
 		const data = await fetchData('https://gkhhvx35ks.us-east-1.awsapprunner.com/first-web/my_name');
+		
 		console.log('Data fetched:', data);
 		return data;
 	}
 	
-	getData();	
+	useEffect(() => {
+		setProducts(DEFAULT_DATA);
+		getData();	
+	},[]);
 
-	function handleOnChange() {
-
-	}
+	const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+		if (event) {
+			const result = products.filter(element => { element.name.toLowerCase().includes(event.target.value.toLowerCase()) })
+			console.log(result)
+			setProducts(result);
+		} else {
+		  	setProducts(DEFAULT_DATA); 
+		}
+	  };
 
 	return (
 		<Layout style={{ padding: '24px'}}>
@@ -50,8 +46,13 @@ export default function Products() {
 					items={items2}
 					/>
 				</Sider> */}
-				<Search placeholder="Search..." allowClear enterButton/>
-			<ProductList list={[{id: 1, name: "Motor nowoczesny", price: 10000, description: "Taki opis", imgUrl: 'https://picsum.photos/700/600'},{id: 2, name: "Motor nowoczesny", price: 10000, description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit facilisis vehicula.", imgUrl: 'https://picsum.photos/700/700'}]}></ProductList>
+				<Search placeholder="Search..." allowClear enterButton onSubmit={handleOnChange}/>
+				{/* <span>
+					<Search className={s.input} placeholder="Search..." onChange={handleOnChange}/>
+					<button>Search</button>
+				</span> */}
+
+			<ProductList list={products}></ProductList>
 		</Layout>
 	);
 };
