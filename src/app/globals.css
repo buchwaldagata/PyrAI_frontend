@@ -1,0 +1,29 @@
+:root {
+	--color-primary: #ED6A5A;
+	--color-secondary: #F4F1BB;
+	--color-accent: #9BC1BC;
+
+	--color-black: #222222;
+	--color-white: #ffffff;
+}
+
+body {
+	margin: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif; /* For general text */
+}
+
+h1, h2, h3 {
+	font-family: 'Roboto Condensed', sans-serif; /* For headings */
+}
+
+a {
+	color: var(--color-white);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--color-primary);
+}

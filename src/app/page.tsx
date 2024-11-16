@@ -1,18 +1,8 @@
-import Link from "next/link";
-
-export default function Home() {
+export default function Login() {
 
       return (
-    <ul>
-      <li>
-        <Link href="/product">Home</Link>
-      </li>
-	  <li>
-        <Link href="/user">My profile</Link>
-      </li>
-      <li>
-        <Link href="/login">Login</Link>
-      </li>
-    </ul>
+    <div>
+		login
+	</div>
   )
 }
