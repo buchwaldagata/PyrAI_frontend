@@ -1,21 +1,17 @@
 import { Card } from "antd";
 import React from "react";
 
-const tempdata = {
-  title: "Project Title",
-  description: "Project Description",
-  keywords: ["keyword1", "keyword2", "keyword3"],
-  liked: 0,
-  google_scholar: "https://scholar.google.com",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  article: "https://arxiv.org",
-};
 import { CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
-export default function ProjectAdditionals(props) {
+interface ProjectProps {
+  business: string;
+  emails: string;
+  url: string;
+  keywords: string;
+}
 
+export default function ProjectAdditionals(props: { data: ProjectProps }) {
   return (
     <Card
       style={{ width: "100%" }}
@@ -27,20 +23,13 @@ export default function ProjectAdditionals(props) {
       }
     >
       <p>Description: {props.data.business}</p>
-      <p>Keywords: {tempdata.keywords.join(", ")}</p>
-      <p>Liked: {tempdata.liked}</p>
+      <p>Keywords: {props.data.keywords}</p>
+
       <p>
-        Google Scholar:{" "}
-        <a href={tempdata.google_scholar}>{tempdata.google_scholar}</a>
+        URL: <a href={props.data.url}>{props.data.url}</a>
       </p>
       <p>
-        Github: <a href={tempdata.github}>{tempdata.github}</a>
-      </p>
-      <p>
-        Linkedin: <a href={tempdata.linkedin}>{tempdata.linkedin}</a>
-      </p>
-      <p>
-        Article: <a href={tempdata.article}>{tempdata.article}</a>
+        email: <a href={props.data.emails}>{props.data.emails}</a>
       </p>
     </Card>
   );
