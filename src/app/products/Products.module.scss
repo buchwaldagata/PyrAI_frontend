@@ -1,3 +1,14 @@
+.wrapper {
+	display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+}
+
+.productsContainer {
+    width: 50vw;
+}
+
 .input {
 	padding: 7px;
 	border-radius: 5px;
