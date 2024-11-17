@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import React, { useState } from "react";
-import { createFromIconfontCN } from "@ant-design/icons";
+import { createFromIconfontCN, DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Col, Divider, Input, Row, Tag } from "antd";
 import Meta from "antd/es/card/Meta";
-import TagAdder from "../components/userForm/TagAdder";
-import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { useState } from "react";
 import PaperForm from "../components/userForm/PaperForm";
+
 const IconFont = createFromIconfontCN({
   scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
 });
@@ -46,12 +45,11 @@ export default function User() {
     <div
       style={{
         display: "flex",
-        alignItems: "center",
         flexDirection: "column",
-        width: "100%",
+		margin: "0 30%",
       }}
     >
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", width: "100%" }}>
         <h1>Your profile</h1>
       </div>
       <Card title={user.name} bordered={true}>
@@ -72,7 +70,7 @@ export default function User() {
         <Divider />
         <Row align="middle" justify="space-between">
           <Col>
-            <p>gmail:</p>
+            <p>Email:</p>
           </Col>
           <Col>
             <Input placeholder="Basic usage" value={user.email} />
@@ -88,7 +86,7 @@ export default function User() {
         </Row>
         <Row align="middle" justify="space-between">
           <Col>
-            <p>ResearchGate:</p>
+            <p>Research Gate:</p>
           </Col>
           <Col>
             <Input placeholder="Basic usage" />
@@ -102,13 +100,18 @@ export default function User() {
             <Input placeholder="Basic usage" />
           </Col>
         </Row>
+		<Row>
+			<Col>
+			<Button type="primary">Save</Button>
+			</Col>
+		</Row>
         <Row
           align="middle"
           justify="space-between"
           style={{ marginTop: "15px" }}
         >
           <Col>
-            <h4>add your papers (optionally)</h4>
+            <h4>Add your papers (optionally)</h4>
           </Col>
           <Col>
             <Button
