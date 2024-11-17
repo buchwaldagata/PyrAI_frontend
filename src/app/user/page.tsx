@@ -47,7 +47,6 @@ export default function User() {
     >
       <div style={{ display: "flex", flexDirection: "row" }}>
         <h1>Your profile</h1>
-        <Button type="primary">Edit</Button>
       </div>
       <Card title={user.name} bordered={true} style={{ width: 1200 }}>
         <Meta

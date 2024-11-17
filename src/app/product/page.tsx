@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
+// import { useSearchParams } from "next/navigation";
 
 export default function Product() {
-  return (
-	<div>
-	  product
-	</div>
-  )
+  // const searchParams = useSearchParams();
+  return <div>product</div>;
 }

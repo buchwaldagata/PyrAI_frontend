@@ -1,29 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
 :root {
-	--color-primary: #ED6A5A;
-	--color-secondary: #F4F1BB;
-	--color-accent: #9BC1BC;
+  --color-primary: #ed6a5a;
+  --color-secondary: #f4f1bb;
+  --color-accent: #9bc1bc;
 
-	--color-black: #222222;
-	--color-white: #ffffff;
+  --color-black: #222222;
+  --color-white: #ffffff;
 }
 
 body {
-	margin: 0;
+  color: black;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f5f7;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
 }
 
+main {
+  min-height: 79vh;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 body {
-	font-family: 'Roboto', sans-serif; /* For general text */
+  font-family: "Roboto", sans-serif; /* For general text */
 }
 
-h1, h2, h3 {
-	font-family: 'Roboto Condensed', sans-serif; /* For headings */
+h1,
+h2,
+h3 {
+  font-family: "Roboto Condensed", sans-serif; /* For headings */
 }
 
 a {
-	color: var(--color-white);
-	text-decoration: none;
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 a:hover {
-	color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+h4 {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h4:after {
+  content: "";
+  display: inline-block;
+  height: 0.5em;
+  vertical-align: bottom;
+  width: 100%;
+  margin-right: -100%;
+  margin-left: 10px;
+  border-top: 1px solid #ddd;
 }

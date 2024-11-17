@@ -1,47 +1,94 @@
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+"use client";
 import { Layout } from "antd";
-import { createElement } from "react";
-import { fetchData } from "../api/products/products";
-import { ProductList } from "../components/product_list/ProductList";
-import Search from 'antd/es/input/Search';
+import Search from "antd/es/input/Search";
+import { Project } from "../components/product_list/Project";
 
 export default function Products() {
-	const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-		(icon, index) => {
-		const key = String(index + 1);
-	
-		return {
-			key: `sub${key}`,
-			icon: createElement(icon),
-			label: `subnav ${key}`, // Tytuł rozwijanego menu
-	
-			// Generowanie 4 elementów w menu dla każdego rozwinięcia
-			children: new Array(4).fill(null).map((_, j) => {
-			const subKey = index * 4 + j + 1;
-			return {
-				key: subKey.toString(),
-				label: `option ${subKey}`,
-			};
-			}),
-		};
-		}
-	);
-	async function getData() {
-		
-		const data = await fetchData('https://gkhhvx35ks.us-east-1.awsapprunner.com/first-web/my_name');
-		console.log('Data fetched:', data);
-		return data;
-	}
-	
-	getData();	
+  //   const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
+  //     (icon, index) => {
+  //       const key = String(index + 1);
 
-	function handleOnChange() {
+  //       return {
+  //         key: `sub${key}`,
+  //         icon: createElement(icon),
+  //         label: `subnav ${key}`, // Tytuł rozwijanego menu
 
-	}
+  //         // Generowanie 4 elementów w menu dla każdego rozwinięcia
+  //         children: new Array(4).fill(null).map((_, j) => {
+  //           const subKey = index * 4 + j + 1;
+  //           return {
+  //             key: subKey.toString(),
+  //             label: `option ${subKey}`,
+  //           };
+  //         }),
+  //       };
+  //     }
+  //   );
 
-	return (
-		<Layout style={{ padding: '24px'}}>
-				{/* <Sider width={200}>
+  const exampleproject = [
+    {
+      keywords: ["AI", "Machine Learning", "Data Science"],
+      id: 1,
+      liked: 1243,
+    },
+    {
+      keywords: ["AI", "Machine Learning", "Data Science", "Deep Learning"],
+      id: 2,
+      liked: 987,
+    },
+    {
+      keywords: [
+        "AI",
+        "Machine Learning",
+        "Data Science",
+        "Deep Learning",
+        "Neural Networks",
+      ],
+      id: 3,
+      liked: 456,
+    },
+    { keywords: ["AI", "Robotics", "Automation"], id: 4, liked: 789 },
+    {
+      keywords: ["AI", "Natural Language Processing", "Chatbots"],
+      id: 5,
+      liked: 321,
+    },
+    {
+      keywords: ["AI", "Computer Vision", "Image Recognition"],
+      id: 6,
+      liked: 654,
+    },
+    {
+      keywords: ["AI", "Reinforcement Learning", "Game AI"],
+      id: 7,
+      liked: 432,
+    },
+    {
+      keywords: ["AI", "Speech Recognition", "Voice Assistants"],
+      id: 8,
+      liked: 876,
+    },
+    { keywords: ["AI", "Predictive Analytics", "Big Data"], id: 9, liked: 543 },
+    {
+      keywords: ["AI", "Recommendation Systems", "Personalization"],
+      id: 10,
+      liked: 234,
+    },
+    {
+      keywords: ["AI", "Cognitive Computing", "Decision Making"],
+      id: 11,
+      liked: 678,
+    },
+    {
+      keywords: ["AI", "Autonomous Vehicles", "Self-Driving Cars"],
+      id: 12,
+      liked: 987,
+    },
+  ];
+
+  return (
+    <Layout style={{ padding: "24px" }}>
+      {/* <Sider width={200}>
 					<Menu
 					mode="inline"
 					defaultSelectedKeys={['1']}
@@ -50,8 +97,23 @@ export default function Products() {
 					items={items2}
 					/>
 				</Sider> */}
-				<Search placeholder="Search..." allowClear enterButton/>
-			<ProductList list={[{id: 1, name: "Motor nowoczesny", price: 10000, description: "Taki opis", imgUrl: 'https://picsum.photos/700/600'},{id: 2, name: "Motor nowoczesny", price: 10000, description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit facilisis vehicula.", imgUrl: 'https://picsum.photos/700/700'}]}></ProductList>
-		</Layout>
-	);
-};
+      <Search
+        placeholder="Search interesting project..."
+        allowClear
+        enterButton
+      />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+          marginTop: "20px",
+        }}
+      >
+        {exampleproject.map((project) => (
+          <Project project={project} key={project.id} />
+        ))}
+      </div>
+    </Layout>
+  );
+}
