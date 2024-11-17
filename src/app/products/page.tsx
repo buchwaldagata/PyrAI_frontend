@@ -1,5 +1,5 @@
 "use client";
-import { Button, Layout } from "antd";
+import { Col, Layout, Row, Tag } from "antd";
 import Search from "antd/es/input/Search";
 import { Project } from "../components/product_list/Project";
 
@@ -88,23 +88,33 @@ export default function Products() {
 
   return (
     <Layout style={{ padding: "24px" }}>
-      {/* <Sider width={200}>
-					<Menu
-					mode="inline"
-					defaultSelectedKeys={['1']}
-					defaultOpenKeys={['sub1']}
-					style={{ height: '100%' }}
-					items={items2}
-					/>
-				</Sider> */}
       <Search
         placeholder="Search interesting project..."
         allowClear
         enterButton
       />
-      <div>
-        <Button type="primary">Search hotness</Button>
-      </div>
+      <Row justify={"space-between"} style={{ marginTop: "15px" }}>
+        <Col>Trending searches:</Col>
+        <Col>
+          <Tag>Machine learning</Tag>
+        </Col>
+        <Col>
+          <Tag>AI</Tag>
+        </Col>
+        <Col>
+          <Tag>Deep learning</Tag>
+        </Col>
+        <Col>
+          <Tag>Computer vision</Tag>
+        </Col>
+        <Col>
+          <Tag>Robotics</Tag>
+        </Col>
+        <Col>
+          <Tag>Natural language processing</Tag>
+        </Col>
+      </Row>
+
       <div
         style={{
           display: "flex",

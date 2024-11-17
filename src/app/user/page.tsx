@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { useState } from "react";
-import { Avatar, Button, Card, Divider, Tag } from "antd";
+import { createFromIconfontCN } from "@ant-design/icons";
+import { Avatar, Button, Card, Col, Divider, Input, Row, Tag } from "antd";
 import Meta from "antd/es/card/Meta";
 import TagAdder from "../components/userForm/TagAdder";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import PaperForm from "../components/userForm/PaperForm";
+const IconFont = createFromIconfontCN({
+  scriptUrl: "//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js",
+});
 
 const user = {
   name: "John Doe",
@@ -31,8 +36,8 @@ const user = {
   ],
 };
 export default function User() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
-  // const [papers, setPapers] = useState(user.papers);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [papers, setPapers] = useState(user.papers);
   const openAddPaperModal = () => {
     setIsModalOpen(true);
   };
@@ -43,6 +48,7 @@ export default function User() {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
+        width: "100%",
       }}
     >
       <div style={{ display: "flex", flexDirection: "row" }}>
@@ -53,26 +59,69 @@ export default function User() {
           avatar={
             <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
           }
-          title="Card title"
-          description="This is the description"
+          title="Reasercher"
         />
-        {user.status.map((status, index) => (
-          <Tag color="#2db7f5" key={index}>
-            {status}
-          </Tag>
-        ))}
-        <p>{user.email}</p>
-        <TagAdder />
-        <p>Here is the user page</p>
+        <Row style={{ marginTop: "20px" }}>
+          {user.status.map((status, index) => (
+            <Tag color="#2db7f5" key={index}>
+              {status}
+            </Tag>
+          ))}
+        </Row>
+
         <Divider />
-        <h4>add your papers (optionally)</h4>
-        <Button
-          icon={<PlusOutlined />}
-          onClick={openAddPaperModal}
-          type="primary"
-        ></Button>
+        <Row align="middle" justify="space-between">
+          <Col>
+            <p>gmail:</p>
+          </Col>
+          <Col>
+            <Input placeholder="Basic usage" value={user.email} />
+          </Col>
+        </Row>
+        <Row align="middle" justify="space-between">
+          <Col>
+            <p>Google Scholar:</p>
+          </Col>
+          <Col>
+            <Input placeholder="Basic usage" />
+          </Col>
+        </Row>
+        <Row align="middle" justify="space-between">
+          <Col>
+            <p>ResearchGate:</p>
+          </Col>
+          <Col>
+            <Input placeholder="Basic usage" />
+          </Col>
+        </Row>
+        <Row align="middle" justify="space-between">
+          <Col>
+            <p>LinkedIn:</p>
+          </Col>
+          <Col>
+            <Input placeholder="Basic usage" />
+          </Col>
+        </Row>
+        <Row
+          align="middle"
+          justify="space-between"
+          style={{ marginTop: "15px" }}
+        >
+          <Col>
+            <h4>add your papers (optionally)</h4>
+          </Col>
+          <Col>
+            <Button
+              icon={<PlusOutlined />}
+              onClick={openAddPaperModal}
+              type="primary"
+              style={{ marginLeft: "10px" }}
+            />
+          </Col>
+        </Row>
+
         <PaperForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-        {user.papers.map((paper) => {
+        {papers.map((paper) => {
           return (
             <div
               key={paper.title}
@@ -86,20 +135,24 @@ export default function User() {
                 style={{
                   display: "flex",
                   flexDirection: "row",
+                  justifyContent: "space-between",
                 }}
               >
-                {paper.keywords.map((keyword) => (
-                  <Tag color="#f50" key={keyword}>
-                    {keyword}
-                  </Tag>
-                ))}{" "}
                 <div>
-                  <Button type="primary">Edit</Button>
-                  <Button type="primary">Delete</Button>
+                  {paper.keywords.map((keyword) => (
+                    <Tag color="#f50" key={keyword}>
+                      {keyword}
+                    </Tag>
+                  ))}{" "}
+                </div>
+                <div>
+                  <Button type="text" icon={<EditOutlined />} />
+                  <Button type="text" icon={<DeleteOutlined />} />
                 </div>
               </div>
-              {paper.title} {paper.authors} {paper.date} {paper.status}{" "}
-              {paper.keywords}
+              {paper.title},{"  "} {paper.authors}
+              <br />
+              {paper.date} {paper.status} {paper.keywords}
             </div>
           );
         })}

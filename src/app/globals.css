@@ -32,7 +32,9 @@ body {
   font-family: "Roboto", sans-serif; /* For general text */
 }
 
-h1,
+h1 {
+  font-size: 26px;
+}
 h2,
 h3 {
   font-family: "Roboto Condensed", sans-serif; /* For headings */
