@@ -18,6 +18,15 @@ export default function Products() {
       setData
     );
   }, []);
+  async function sendSearch(searchPhrase: string) {
+	const data = await sendData('https://svqyzbzssx.us-east-1.awsapprunner.com/getArticlesAsInvestors', searchPhrase);
+	console.log('Data sent:', data);
+	return data;
+}
+
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	sendSearch(event.target.value);
+  }
 
   return (
     <Layout style={{ padding: "24px" }} className={s.wrapper}>
