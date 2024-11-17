@@ -52,7 +52,7 @@ export const Project = (props: {
     >
       <div className={s.gradientContainer}>
         {keywords.map((keyword: string, id: number) => (
-          <div key={id} style={{ display: "flex", flexDirection: "column" }}>
+          <div key={id} style={{ display: "flex", flexDirection: "column" }} className={s.item}>
             {/* <p>{product.description}</p> */}
 
             <Tag color="#fff" style={{ color: "#000" }}>

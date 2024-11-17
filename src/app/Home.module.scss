@@ -19,6 +19,10 @@
 		.buttons {
 			display: flex;
 			gap: 20px;
+
+			a:hover {
+				color: var(--color-black)
+			}
 		}
 	}
 }
