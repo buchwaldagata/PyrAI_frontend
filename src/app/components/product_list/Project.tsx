@@ -12,7 +12,12 @@ import {
 } from "@ant-design/icons";
 
 export const Project = (props: {
-  project: { business: string; emails: string; url: string; keywords: string };
+  project: {
+    description: string;
+    emails: string;
+    url: string;
+    keywords: string;
+  };
   id: number;
   type: "Business" | "Investors";
 }) => {
@@ -53,14 +58,13 @@ export const Project = (props: {
       <div className={s.gradientContainer}>
         {keywords.map((keyword: string, id: number) => (
           <div key={id} style={{ display: "flex", flexDirection: "column" }}>
-            {/* <p>{product.description}</p> */}
-
             <Tag color="#fff" style={{ color: "#000" }}>
               {keyword}
             </Tag>
           </div>
         ))}
       </div>
+      <p>{props.project.description}</p>
     </Card>
   );
 };

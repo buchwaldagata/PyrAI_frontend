@@ -7,6 +7,7 @@ import { Project } from "../components/product_list/Project";
 import s from "./Products.module.scss";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../api/products/products";
+
 export default function Products() {
   const [data, setData] = useState<
     { business: string; emails: string; url: string; keywords: string }[]
