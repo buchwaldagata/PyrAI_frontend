@@ -5,7 +5,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 interface ProjectProps {
-  business: string;
+  description: string;
   emails: string;
   url: string;
   keywords: string;
@@ -22,7 +22,8 @@ export default function ProjectAdditionals(props: { data: ProjectProps }) {
         </Link>
       }
     >
-      <p>Description: {props.data.business}</p>
+      <p>Description: </p>
+      <p>{props.data.description}</p>
       <p>Keywords: {props.data.keywords}</p>
 
       <p>

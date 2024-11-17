@@ -4,15 +4,15 @@
 import { useSearchParams } from "next/navigation";
 import ProjectAdditionals from "../components/product_list/ProjectAdditionals";
 import s from "./Product.module.scss";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { fetchAllProducts } from "../api/products/products";
 
-export default function Product() {
+function ProductPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const type = searchParams.get("type") || "";
   const [data, setData] = useState<
-    { business: string; emails: string; url: string; keywords: string }[]
+    { description: string; emails: string; url: string; keywords: string }[]
   >([]);
 
   useEffect(() => {
@@ -38,5 +38,13 @@ export default function Product() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function Product() {
+  return (
+    <Suspense>
+      <ProductPage />;
+    </Suspense>
   );
 }

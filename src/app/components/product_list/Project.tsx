@@ -12,7 +12,12 @@ import {
 } from "@ant-design/icons";
 
 export const Project = (props: {
-  project: { business: string; emails: string; url: string; keywords: string };
+  project: {
+    description: string;
+    emails: string;
+    url: string;
+    keywords: string;
+  };
   id: number;
   type: "Business" | "Investors";
 }) => {
@@ -61,6 +66,7 @@ export const Project = (props: {
           </div>
         ))}
       </div>
+      <p>{props.project.description}</p>
     </Card>
   );
 };
