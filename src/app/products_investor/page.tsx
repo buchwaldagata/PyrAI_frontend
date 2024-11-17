@@ -7,13 +7,14 @@ import { Project } from "../components/product_list/Project";
 import s from "./Products.module.scss";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../api/products/products";
-export default function Products() {
+
+export default function ProductsInvestor() {
   const [data, setData] = useState<
     { business: string; emails: string; url: string; keywords: string }[]
   >([]);
   useEffect(() => {
     fetchAllProducts(
-      "https://svqyzbzssx.us-east-1.awsapprunner.com/getArticlesAsBusiness",
+      "https://svqyzbzssx.us-east-1.awsapprunner.com/getArticlesAsInvestor",
       setData
     );
   }, []);
@@ -62,7 +63,7 @@ export default function Products() {
                 project={project}
                 key={index}
                 id={index}
-                type="Business"
+                type="Investors"
               />
             ))
           : null}

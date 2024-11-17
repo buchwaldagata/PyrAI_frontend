@@ -20,19 +20,19 @@ export interface ProductItem {
   keywords: string[];
 }
 
-export async function fetchAllProducts(url: string): Promise<ProductItem[]> {
-  const response = await fetch(url, {
-    method: "GET",
-    headers: { "Content-type": "application/json" },
-  });
-  if (!response.ok) {
-    throw new Error(`Failed to fetch products. ${response.statusText}`);
-  }
-  const products: ProductItem[] = await response.json();
-  return products;
-}
+// export async function fetchAllProducts(url: string): Promise<ProductItem[]> {
+//   const response = await fetch(url, {
+//     method: "GET",
+//     headers: { "Content-type": "application/json" },
+//   });
+//   if (!response.ok) {
+//     throw new Error(`Failed to fetch products. ${response.statusText}`);
+//   }
+//   const products: ProductItem[] = await response.json();
+//   return products;
+// }
 
-export function getEnsemblData(url: string, setData: any) {
+export function fetchAllProducts(url: string, setData: any) {
   const requestOptions = {
     method: "GET",
     headers: {
@@ -46,11 +46,9 @@ export function getEnsemblData(url: string, setData: any) {
     .then((response: any) => response.json())
     .then((response: any) => {
       if (response.length === 0) {
-        // setPdbError(true);
         message.error("error");
       } else {
         setData(response);
-        console.log(response);
       }
     })
     .catch((error: any) => {

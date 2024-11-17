@@ -1,24 +1,41 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useState, useEffect } from "react";
-import { fetchAllProducts, ProductItem } from "../api/products/products";
-//import { useSearchParams } from "next/navigation";
+
+import { useSearchParams } from "next/navigation";
 import ProjectAdditionals from "../components/product_list/ProjectAdditionals";
 import s from "./Product.module.scss";
+import { useEffect, useState } from "react";
+import { fetchAllProducts } from "../api/products/products";
 
 export default function Product() {
-  //const searchParams = useSearchParams();
-  //const id = searchParams.get("id");
-  const [data, setData] = useState([]);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  const type = searchParams.get("type") || "";
+  const [data, setData] = useState<
+    { business: string; emails: string; url: string; keywords: string }[]
+  >([]);
+
   useEffect(() => {
-    fetchAllProducts(
-      "https://svqyzbzssx.us-east-1.awsapprunner.com/getArticlesAsBusiness"
-    );
+    if (type) {
+      fetchAllProducts(
+        `https://svqyzbzssx.us-east-1.awsapprunner.com/getArticlesAs${type}`,
+        setData
+      );
+    }
   }, []);
 
   return (
     <div className={s.wrapper}>
       <div className={s.productContent}>
-        {data.length != 0 ? <ProjectAdditionals /> : <div>Loading...</div>}
+        {data.length !== 0 ? (
+          id !== null ? (
+            <ProjectAdditionals data={data[Number(id)]} />
+          ) : (
+            <div>Loading...</div>
+          )
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     </div>
   );
