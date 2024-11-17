@@ -13,7 +13,8 @@ export default function Product() {
 		console.log('Data fetched:', data);
 		return data;
 	}
-	const data: ProductItem[] = getData().then();
+	let data: ProductItem[] = [];
+	getData().then(elem => data = elem);
 	
 	return (
 		<div className={s.wrapper}>

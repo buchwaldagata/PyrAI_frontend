@@ -13,12 +13,9 @@ const tempdata = {
 };
 import { CloseOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { ProductItem } from "@/app/api/products/products";
 
-export default function ProjectAdditionals(props: { data: { business: ProductItem[] | string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<React.AwaitedReactNode> | null | undefined; }; }) {
+export default function ProjectAdditionals(props) {
 
-
-	
   return (
     <Card
       style={{ width: "100%" }}
@@ -29,7 +26,7 @@ export default function ProjectAdditionals(props: { data: { business: ProductIte
         </Link>
       }
     >
-      <p>{props.data.business}</p>
+      <p>Description: {props.data.business}</p>
       <p>Keywords: {tempdata.keywords.join(", ")}</p>
       <p>Liked: {tempdata.liked}</p>
       <p>

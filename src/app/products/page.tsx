@@ -66,7 +66,7 @@ export default function Products() {
   ];
 
   return (
-    <Layout style={{ padding: "24px" }}>
+    <Layout style={{ padding: "24px" }} className={s.wrapper}>
       <Search
         placeholder="Search interesting project..."
         allowClear
@@ -101,12 +101,12 @@ export default function Products() {
           gap: "15px",
           marginTop: "20px",
         }}
+		className={s.content}
       >
         {exampleproject.map((project) => (
           <Project project={project} key={project.id} />
         ))}
       </div>
     </Layout>
-	</div>
   );
 }

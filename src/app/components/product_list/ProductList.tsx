@@ -19,6 +19,7 @@ interface Props {
 export const ProductList: FC<Props> = (props) => {
 
 	const { list } = props;
+	// expected to add images randomly here
 	const images = [image1, image2, image3];
 	const min = 0, max = 2;
 	const number = Math.floor(Math.random() * (max - min + 1) + min);

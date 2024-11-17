@@ -63,7 +63,7 @@ export const Project = (props: {
         {props.project.keywords.map((keyword: string, id: number) => (
           <div key={id} className={s.card}>
             <div className={s.cardInner}>
-              <Tag color="#f50">{keyword}</Tag>
+              <Tag color="#ed6a5a">{keyword}</Tag>
               {/* <p>{product.description}</p> */}
               <span
                 key={keyword}

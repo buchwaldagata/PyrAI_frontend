@@ -36,7 +36,7 @@ export default function RootLayout({
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: "#00FAAB",
+              colorPrimary: "#9bc1bc",
               borderRadius: 16,
               fontFamily: openSans.style.fontFamily,
               borderRadiusSM: 12,
