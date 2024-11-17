@@ -2,7 +2,7 @@
 import { Col, Layout, Row, Tag } from "antd";
 import Search from "antd/es/input/Search";
 import { Project } from "../components/product_list/Project";
-import s from './Products.module.scss';
+import s from "./Products.module.scss";
 export default function Products() {
   const exampleproject = [
     {
@@ -107,6 +107,5 @@ export default function Products() {
         ))}
       </div>
     </Layout>
-	</div>
   );
 }
