@@ -1,17 +1,25 @@
 "use client";
-import React from "react";
-import { useSearchParams } from "next/navigation";
-
+import { fetchAllProducts, ProductItem } from "../api/products/products";
+//import { useSearchParams } from "next/navigation";
 import ProjectAdditionals from "../components/product_list/ProjectAdditionals";
+import s from './Product.module.scss';
+
 
 export default function Product() {
-  const searchParams = useSearchParams();
-
-  const id = searchParams.get("id");
-  return (
-    <div style={{ width: "100%" }}>
-      <h1>{id}</h1>
-      <ProjectAdditionals />
-    </div>
-  );
+	//const searchParams = useSearchParams();
+	//const id = searchParams.get("id");
+	async function getData() {
+		const data: ProductItem[] = await fetchAllProducts('https://svqyzbzssx.us-east-1.awsapprunner.com/getArticlesAsBusiness');
+		console.log('Data fetched:', data);
+		return data;
+	}
+	const data: ProductItem[] = getData().then();
+	
+	return (
+		<div className={s.wrapper}>
+			<div className={s.productContent}>
+				<ProjectAdditionals data={data}/>
+			</div>
+		</div>
+	);
 }
