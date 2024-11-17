@@ -1,0 +1,24 @@
+.mainCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 70vh;
+	justify-content: center;
+
+	.card {
+		width: 50vw;
+		padding: 60px;
+		background-color: white;
+		color: grey;
+		border-radius: 5px;
+		line-height: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+
+		.buttons {
+			display: flex;
+			gap: 20px;
+		}
+	}
+}
