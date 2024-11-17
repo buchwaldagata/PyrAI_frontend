@@ -28,8 +28,10 @@ export default function TagAdder() {
   }, [inputVisible]);
 
   useEffect(() => {
-    editInputRef.current?.focus();
-  }, [editInputValue]);
+    if (editInputIndex !== -1) {
+      editInputRef.current?.focus();
+    }
+  }, [editInputIndex]);
 
   const handleClose = (removedTag: string) => {
     const newTags = tags.filter((tag) => tag !== removedTag);

@@ -1,5 +1,5 @@
 "use client";
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import Search from "antd/es/input/Search";
 import { Project } from "../components/product_list/Project";
 
@@ -102,6 +102,9 @@ export default function Products() {
         allowClear
         enterButton
       />
+      <div>
+        <Button type="primary">Search hotness</Button>
+      </div>
       <div
         style={{
           display: "flex",

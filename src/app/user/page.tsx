@@ -32,7 +32,7 @@ const user = {
 };
 export default function User() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
-
+  // const [papers, setPapers] = useState(user.papers);
   const openAddPaperModal = () => {
     setIsModalOpen(true);
   };
@@ -48,7 +48,7 @@ export default function User() {
       <div style={{ display: "flex", flexDirection: "row" }}>
         <h1>Your profile</h1>
       </div>
-      <Card title={user.name} bordered={true} style={{ width: 1200 }}>
+      <Card title={user.name} bordered={true}>
         <Meta
           avatar={
             <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
@@ -65,14 +65,12 @@ export default function User() {
         <TagAdder />
         <p>Here is the user page</p>
         <Divider />
-        <h2>Papers</h2>
+        <h4>add your papers (optionally)</h4>
         <Button
           icon={<PlusOutlined />}
           onClick={openAddPaperModal}
           type="primary"
-        >
-          Add paper
-        </Button>
+        ></Button>
         <PaperForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
         {user.papers.map((paper) => {
           return (
@@ -95,6 +93,10 @@ export default function User() {
                     {keyword}
                   </Tag>
                 ))}{" "}
+                <div>
+                  <Button type="primary">Edit</Button>
+                  <Button type="primary">Delete</Button>
+                </div>
               </div>
               {paper.title} {paper.authors} {paper.date} {paper.status}{" "}
               {paper.keywords}

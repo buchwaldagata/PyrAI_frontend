@@ -23,7 +23,7 @@ body {
 
 main {
   min-height: 79vh;
-  width: 75vw;
+  width: 50vw;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,7 +39,7 @@ h3 {
 }
 
 a {
-  color: var(--color-white);
+  color: var(--color-black);
   text-decoration: none;
 }
 

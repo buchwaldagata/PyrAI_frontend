@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Card, Tag } from "antd";
 // import image from "./Cover.png";
-
+import { useRouter } from "next/navigation";
 import s from "./ProductList.module.scss";
 import {
   CommentOutlined,
@@ -10,7 +10,6 @@ import {
   HeartOutlined,
   HeartFilled,
 } from "@ant-design/icons";
-import Link from "next/link";
 
 const gradients = [
   "from-purple-400 to-pink-500",
@@ -40,7 +39,7 @@ export const Project = (props: {
       .reduce((sum, char) => sum + char.charCodeAt(0), 0);
     return gradients[charSum % gradients.length];
   };
-
+  const router = useRouter();
   return (
     <Card
       actions={[
@@ -53,12 +52,10 @@ export const Project = (props: {
 
         <div
           key="ellipsis"
-          onClick={() => handleClick()}
+          onClick={() => router.push(`/product?id=${props.project.id}`)}
           style={{ gap: "10px" }}
         >
-          <Link href="/product">
-            <CommentOutlined size={30} />
-          </Link>
+          <CommentOutlined size={30} />
         </div>,
       ]}
     >
